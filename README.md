@@ -6,7 +6,7 @@
 一个现代化的图像和MP3封面颜色调色板提取工具，基于React和TypeScript构建
 
 [![React](https://img.shields.io/badge/React-19.2.3-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-blue.svg)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-red.svg)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.2.0-purple.svg)](https://vitejs.dev/)
 
 </div>
@@ -33,7 +33,7 @@
 
 1. **克隆项目**
 ```bash
-git clone <repository-url>
+git clone https://github.com/Domdkw/theme-color-extraction.git
 cd theme-color-extraction
 ```
 
