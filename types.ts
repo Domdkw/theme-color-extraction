@@ -16,6 +16,13 @@ export enum QuantityMode {
   SINGLE = 'SINGLE'
 }
 
+export enum ResolutionMode {
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH',
+  ULTRA = 'ULTRA'
+}
+
 export interface ColorPalette {
   hex: string;
   rgb: { r: number; g: number; b: number };

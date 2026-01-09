@@ -4,6 +4,7 @@ import {
   ExtractionStatus, 
   FilterMode, 
   QuantityMode,
+  ResolutionMode,
   ImageFile 
 } from './types';
 import { extractPalette, getMp3Cover } from './utils/colorUtils';
@@ -14,6 +15,7 @@ const App: React.FC = () => {
   const [images, setImages] = useState<ImageFile[]>([]);
   const [filterMode, setFilterMode] = useState<FilterMode>(FilterMode.EXCLUDE_BW);
   const [quantityMode, setQuantityMode] = useState<QuantityMode>(QuantityMode.ALL);
+  const [resolutionMode, setResolutionMode] = useState<ResolutionMode>(ResolutionMode.MEDIUM);
   const [isProcessingBatch, setIsProcessingBatch] = useState(false);
   const [processedCount, setProcessedCount] = useState(0);
   
@@ -62,7 +64,7 @@ const App: React.FC = () => {
       }
 
       const maxColors = quantityMode === QuantityMode.ALL ? 5 : 1;
-      const palette = await extractPalette(url, filterMode, maxColors);
+      const palette = await extractPalette(url, filterMode, maxColors, resolutionMode);
       
       setImages(prev => prev.map(img => 
         img.id === id ? { ...img, status: ExtractionStatus.COMPLETED, palette } : img
@@ -73,7 +75,7 @@ const App: React.FC = () => {
         img.id === id ? { ...img, status: ExtractionStatus.ERROR } : img
       ));
     }
-  }, [filterMode, quantityMode]);
+  }, [filterMode, quantityMode, resolutionMode]);
 
   const startExtraction = async (targetImages?: ImageFile[]) => {
     const list = targetImages || images.filter(img => img.status === ExtractionStatus.PENDING);
@@ -212,8 +214,10 @@ const App: React.FC = () => {
         <SettingsPanel 
           filterMode={filterMode}
           quantityMode={quantityMode}
+          resolutionMode={resolutionMode}
           onFilterModeChange={setFilterMode}
           onQuantityModeChange={setQuantityMode}
+          onResolutionModeChange={setResolutionMode}
         />
 
         {images.length === 0 ? (

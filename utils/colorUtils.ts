@@ -1,5 +1,5 @@
 
-import { ColorPalette, FilterMode } from '../types';
+import { ColorPalette, FilterMode, ResolutionMode } from '../types';
 
 export const rgbToHex = (r: number, g: number, b: number): string => {
   return '#' + [r, g, b].map(x => {
@@ -28,7 +28,8 @@ export const hexToRgba = (hex: string, alpha: number = 1): string => {
 export const extractPalette = async (
   imageUrl: string, 
   filterMode: FilterMode, 
-  maxColors: number = 5
+  maxColors: number = 5,
+  resolutionMode: ResolutionMode = ResolutionMode.MEDIUM
 ): Promise<ColorPalette[]> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -43,7 +44,10 @@ export const extractPalette = async (
         return;
       }
 
-      const size = 100;
+      const size = resolutionMode === ResolutionMode.LOW ? 50 : 
+                   resolutionMode === ResolutionMode.MEDIUM ? 100 : 
+                   resolutionMode === ResolutionMode.HIGH ? 200 : 500;
+      
       canvas.width = size;
       canvas.height = size;
       ctx.drawImage(img, 0, 0, size, size);
