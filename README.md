@@ -3,9 +3,8 @@
 一个强大的命令行工具，用于从图片和音频文件中提取主题颜色调色板
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Node.js-18+-green.svg" alt="Node.js">
+  <img src="https://img.shields.io/badge/Python-3.8+-red.svg" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
-  <img src="https://img.shields.io/badge/Version-1.0.0-orange.svg" alt="Version">
 </div>
 
 ## ✨ 特性
@@ -15,25 +14,26 @@
 - 🎯 **智能过滤** - 可选择排除黑白颜色或保留所有颜色
 - 📊 **颜色统计** - 显示每种颜色的出现频率和百分比
 - 🎨 **多种颜色格式** - 支持 HEX、RGB、RGBA 颜色输出格式
-- ⚡ **高性能** - 基于 Sharp 图像处理库实现快速颜色分析
+- ⚡ **高性能** - 基于 Pillow 图像处理库实现快速颜色分析
 - 🔧 **灵活配置** - 支持自定义分辨率、插值模式、最大颜色数等参数
 - 🐛 **调试模式** - 提供详细的调试信息，便于问题排查
 
 ## 🚀 安装
 
-### 全局安装
+### 使用 pip 安装
 
 ```bash
-npm install -g theme-color-extraction-cli
+pip install -r requirements.txt
 ```
 
-### 本地安装
+### 从源码安装
 
 ```bash
-git clone -b cli https://github.com/Domdkw/theme-color-extraction.git --single-branch
+git clone -b python-cli https://github.com/Domdkw/theme-color-extraction.git --single-branch
 cd theme-color-extraction
-npm install
+pip install -e .
 ```
+
 这里只克隆了单个分支`cli`
 
 ## 📖 使用方法
@@ -42,10 +42,10 @@ npm install
 
 ```bash
 # 提取图片颜色（使用默认设置）
-extract-colors ./image.jpg
+python main.py ./image.jpg
 
-# 或使用 npm 脚本
-npm run extract ./image.jpg
+# 或使用安装后的命令
+extract-colors ./image.jpg
 ```
 
 ### 命令行选项
@@ -66,7 +66,7 @@ npm run extract ./image.jpg
 
 ```bash
 # 提取前 5 个主要颜色（默认）
-extract-colors ./bg.jpg
+python main.py ./bg.jpg
 
 # 输出示例：
 # #FF5733
@@ -80,50 +80,50 @@ extract-colors ./bg.jpg
 
 ```bash
 # 只提取前 3 个颜色
-extract-colors ./bg.jpg --max 3
+python main.py ./bg.jpg --max 3
 
 # 提取前 10 个颜色
-extract-colors ./bg.jpg --max 10
+python main.py ./bg.jpg --max 10
 ```
 
 #### 调整分辨率
 
 ```bash
 # 使用原始分辨率
-extract-colors ./bg.jpg --precision 1
+python main.py ./bg.jpg --precision 1
 
 # 缩放到 50x50 像素
-extract-colors ./bg.jpg --precision 50
+python main.py ./bg.jpg --precision 50
 
 # 缩放到原始尺寸的 50%
-extract-colors ./bg.jpg --precision 0.5
+python main.py ./bg.jpg --precision 0.5
 ```
 
 #### 排除黑白颜色
 
 ```bash
 # 排除黑白及灰色调
-extract-colors ./bg.jpg --unabw
+python main.py ./bg.jpg --unabw
 ```
 
 #### 选择颜色格式
 
 ```bash
 # 输出 HEX 格式（默认）
-extract-colors ./bg.jpg --colorsys hex
+python main.py ./bg.jpg --colorsys hex
 
 # 输出 RGB 格式
-extract-colors ./bg.jpg --colorsys rgb
+python main.py ./bg.jpg --colorsys rgb
 
 # 输出 RGBA 格式
-extract-colors ./bg.jpg --colorsys rgba
+python main.py ./bg.jpg --colorsys rgba
 ```
 
 #### 显示颜色百分比
 
 ```bash
 # 显示每个颜色的占比
-extract-colors ./bg.jpg --present
+python main.py ./bg.jpg --present
 
 # 输出示例：
 # #FF5733 (35%)
@@ -137,27 +137,27 @@ extract-colors ./bg.jpg --present
 
 ```bash
 # 从 MP3 文件提取封面颜色
-extract-colors ./song.mp3
+python main.py ./song.mp3
 
 # 从 M4A 文件提取封面颜色
-extract-colors ./audio.m4a --max 3 --colorsys rgb
+python main.py ./audio.m4a --max 3 --colorsys rgb
 ```
 
 #### 组合选项
 
 ```bash
 # 完整示例：排除黑白、显示百分比、使用 RGB 格式、提取 3 个颜色
-extract-colors ./bg.jpg --unabw --present --colorsys rgb --max 3
+python main.py ./bg.jpg --unabw --present --colorsys rgb --max 3
 
 # 音频文件示例：高精度、排除黑白、调试模式
-extract-colors ./song.mp3 --precision 1 --unabw --dev
+python main.py ./song.mp3 --precision 1 --unabw --dev
 ```
 
 #### 调试模式
 
 ```bash
 # 启用调试模式查看详细处理信息
-extract-colors ./bg.jpg --dev
+python main.py ./bg.jpg --dev
 
 # 输出示例：
 # === 调试信息 ===
@@ -195,30 +195,29 @@ extract-colors ./bg.jpg --dev
 
 ```
 theme-color-extraction/
-├── cli/
-│   └── main.js              # CLI 主程序
 ├── example/                 # 示例文件
 │   ├── bg.jpg              # 示例图片
 │   └── Lighting.mp3        # 示例音频文件
-├── colorUtils.js           # 颜色处理工具函数
-├── index.js                # 程序入口
-├── package.json            # 项目配置
-├── LICENSE                 # MIT 许可证
-└── README.md               # 项目文档
+├── color_utils.py           # 颜色处理工具函数
+├── main.py                  # 程序入口
+├── requirements.txt         # Python 依赖
+├── pyproject.toml           # 项目配置
+├── LICENSE                  # MIT 许可证
+└── README.md                # 项目文档
 ```
 
 ## 🛠️ 技术栈
 
-- **运行环境**: Node.js 18+
-- **图像处理**: Sharp 0.33.5
-- **音频元数据**: music-metadata 11.10.6
-- **开发语言**: JavaScript (ES6+)
+- **运行环境**: Python 3.8+
+- **图像处理**: Pillow 10.0.0+
+- **音频元数据**: Mutagen 1.47.0+
+- **开发语言**: Python 3.8+
 
 ## 🔧 核心功能实现
 
 ### 颜色提取算法
 
-项目使用 Sharp 图像处理库进行图像处理，通过以下步骤提取颜色：
+项目使用 Pillow 图像处理库进行图像处理，通过以下步骤提取颜色：
 
 1. **图像缩放**: 根据精度参数将图片缩放到指定尺寸
 2. **像素采样**: 获取所有像素的 RGB 值
@@ -229,7 +228,7 @@ theme-color-extraction/
 
 ### 音频封面提取
 
-使用 `music-metadata` 库从音频文件中提取专辑封面信息：
+使用 `mutagen` 库从音频文件中提取专辑封面信息：
 
 1. 解析音频文件元数据
 2. 提取嵌入的封面图片
@@ -245,60 +244,60 @@ theme-color-extraction/
 
 ### 主要工具函数
 
-#### `extractPalette(imagePath, options)`
+#### `extract_palette(image_path, options)`
 
 提取图片调色板的主要函数。
 
 **参数:**
-- `imagePath` (string): 图片文件路径
-- `options` (object):
-  - `maxColors` (number): 最大颜色数量，默认 5
-  - `resolution` (number): 分辨率参数，默认 100
-  - `excludeBW` (boolean): 是否排除黑白颜色，默认 false
-  - `interpolation` (string): 插值模式，默认 'linear'
-  - `dev` (boolean): 是否启用调试模式，默认 false
+- `image_path` (str): 图片文件路径
+- `options` (dict):
+  - `maxColors` (int): 最大颜色数量，默认 5
+  - `resolution` (float): 分辨率参数，默认 100
+  - `excludeBW` (bool): 是否排除黑白颜色，默认 False
+  - `interpolation` (str): 插值模式，默认 'linear'
+  - `dev` (bool): 是否启用调试模式，默认 False
 
-**返回值:** `Promise<ColorPalette[]>`
+**返回值:** `List[ColorPalette]`
 
 **ColorPalette 对象结构:**
-```javascript
+```python
 {
-  hex: '#FF5733',        // HEX 颜色值
-  rgb: { r: 255, g: 87, b: 51 },  // RGB 颜色值
-  count: 850,            // 出现次数
-  percentage: 15         // 出现百分比
+    'hex': '#FF5733',        # HEX 颜色值
+    'rgb': {'r': 255, 'g': 87, 'b': 51},  # RGB 颜色值
+    'count': 850,            # 出现次数
+    'percentage': 15         # 出现百分比
 }
 ```
 
-#### `rgbToHex(r, g, b)`
+#### `rgb_to_hex(r, g, b)`
 
 将 RGB 颜色转换为 HEX 格式。
 
 **参数:**
-- `r` (number): 红色分量 (0-255)
-- `g` (number): 绿色分量 (0-255)
-- `b` (number): 蓝色分量 (0-255)
+- `r` (int): 红色分量 (0-255)
+- `g` (int): 绿色分量 (0-255)
+- `b` (int): 蓝色分量 (0-255)
 
-**返回值:** `string` - HEX 颜色值
+**返回值:** `str` - HEX 颜色值
 
-#### `hexToRgb(hex)`
+#### `hex_to_rgb(hex)`
 
 将 HEX 颜色转换为 RGB 格式。
 
 **参数:**
-- `hex` (string): HEX 颜色值
+- `hex` (str): HEX 颜色值
 
-**返回值:** `string` - RGB 颜色字符串
+**返回值:** `str` - RGB 颜色字符串
 
-#### `hexToRgba(hex, alpha)`
+#### `hex_to_rgba(hex, alpha)`
 
 将 HEX 颜色转换为 RGBA 格式。
 
 **参数:**
-- `hex` (string): HEX 颜色值
-- `alpha` (number): 透明度 (0-1)，默认 1
+- `hex` (str): HEX 颜色值
+- `alpha` (float): 透明度 (0-1)，默认 1
 
-**返回值:** `string` - RGBA 颜色字符串
+**返回值:** `str` - RGBA 颜色字符串
 
 ## 📋 支持的文件格式
 
@@ -336,8 +335,8 @@ theme-color-extraction/
 
 ## 🙏 致谢
 
-- [Sharp](https://sharp.pixelplumbing.com/) - 高性能 Node.js 图像处理库
-- [music-metadata](https://github.com/Borewit/music-metadata) - 音频元数据解析库
+- [Pillow](https://pillow.readthedocs.io/) - Python 图像处理库
+- [Mutagen](https://github.com/quodlibet/mutagen) - 音频元数据解析库
 
 ## 📮 联系方式
 
