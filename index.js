@@ -133,10 +133,10 @@ const main = async () => {
   if (audioExtensions.includes(ext)) {
     isAudioFile = true;
     try {
-      console.log(`Extracting cover from audio file: ${path.basename(filePath)}`);
+      if(options.dev) console.log(`Extracting cover from audio file: ${path.basename(filePath)}`);
       tempImagePath = await extractCoverFromAudio(filePath);
       imagePath = tempImagePath;
-      console.log(`Cover extracted successfully`);
+      if(options.dev) console.log(`Cover extracted successfully: ${path.basename(tempImagePath)}`);
     } catch (error) {
       console.error(`Error extracting cover: ${error.message}`);
       process.exit(1);

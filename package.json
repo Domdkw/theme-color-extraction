@@ -2,12 +2,12 @@
   "name": "theme-color-extraction-cli",
   "version": "1.0.0",
   "description": "Extract color palette from images using Node.js CLI",
-  "main": "cli/main.js",
+  "main": "index.js",
   "bin": {
-    "extract-colors": "./cli/main.js"
+    "extract-colors": "./index.js"
   },
   "scripts": {
-    "extract": "node cli/main.js"
+    "extract": "node index.js"
   },
   "keywords": [
     "color",
