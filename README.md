@@ -22,6 +22,11 @@
 - 🎪 **现代化UI** - 响应式设计，美观的用户界面
 - ⚡ **高性能** - 基于Canvas API实现快速颜色分析
 
+## 🌿 其他版本
+
+- [Python CLI 版本](https://github.com/Domdkw/theme-color-extraction/tree/python-cli) - 命令行版本，基于 Python 实现
+- [Node.js CLI 版本](https://github.com/Domdkw/theme-color-extraction/tree/node-cli) - 命令行版本，基于 Node.js 实现
+
 ## 🚀 快速开始
 
 ### 环境要求
