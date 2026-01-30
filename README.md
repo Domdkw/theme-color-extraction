@@ -21,11 +21,6 @@
 
 ## 🚀 安装
 
-### 全局安装
-
-```bash
-npm install -g theme-color-extraction-cli
-```
 
 ### 本地安装
 
@@ -34,7 +29,7 @@ git clone -b cli https://github.com/Domdkw/theme-color-extraction.git --single-b
 cd theme-color-extraction
 npm install
 ```
-这里只克隆了单个分支`cli`
+这里只克隆了单个分支`node-cli`，并且不支持termux环境
 
 ## 📖 使用方法
 
@@ -42,10 +37,10 @@ npm install
 
 ```bash
 # 提取图片颜色（使用默认设置）
-extract-colors ./image.jpg
+node index.js ./image.jpg
 
 # 或使用 npm 脚本
-npm run extract ./image.jpg
+node index.js ./image.jpg
 ```
 
 ### 命令行选项
@@ -66,7 +61,7 @@ npm run extract ./image.jpg
 
 ```bash
 # 提取前 5 个主要颜色（默认）
-extract-colors ./bg.jpg
+node index.js ./bg.jpg
 
 # 输出示例：
 # #FF5733
@@ -80,50 +75,50 @@ extract-colors ./bg.jpg
 
 ```bash
 # 只提取前 3 个颜色
-extract-colors ./bg.jpg --max 3
+node index.js./bg.jpg --max 3
 
 # 提取前 10 个颜色
-extract-colors ./bg.jpg --max 10
+node index.js./bg.jpg --max 10
 ```
 
 #### 调整分辨率
 
 ```bash
 # 使用原始分辨率
-extract-colors ./bg.jpg --precision 1
+node index.js./bg.jpg --precision 1
 
 # 缩放到 50x50 像素
-extract-colors ./bg.jpg --precision 50
+node index.js./bg.jpg --precision 50
 
 # 缩放到原始尺寸的 50%
-extract-colors ./bg.jpg --precision 0.5
+node index.js./bg.jpg --precision 0.5
 ```
 
 #### 排除黑白颜色
 
 ```bash
 # 排除黑白及灰色调
-extract-colors ./bg.jpg --unabw
+node index.js./bg.jpg --unabw
 ```
 
 #### 选择颜色格式
 
 ```bash
 # 输出 HEX 格式（默认）
-extract-colors ./bg.jpg --colorsys hex
+node index.js./bg.jpg --colorsys hex
 
 # 输出 RGB 格式
-extract-colors ./bg.jpg --colorsys rgb
+node index.js./bg.jpg --colorsys rgb
 
 # 输出 RGBA 格式
-extract-colors ./bg.jpg --colorsys rgba
+node index.js./bg.jpg --colorsys rgba
 ```
 
 #### 显示颜色百分比
 
 ```bash
 # 显示每个颜色的占比
-extract-colors ./bg.jpg --present
+node index.js./bg.jpg --present
 
 # 输出示例：
 # #FF5733 (35%)
@@ -137,27 +132,27 @@ extract-colors ./bg.jpg --present
 
 ```bash
 # 从 MP3 文件提取封面颜色
-extract-colors ./song.mp3
+node index.js./song.mp3
 
 # 从 M4A 文件提取封面颜色
-extract-colors ./audio.m4a --max 3 --colorsys rgb
+node index.js./audio.m4a --max 3 --colorsys rgb
 ```
 
 #### 组合选项
 
 ```bash
 # 完整示例：排除黑白、显示百分比、使用 RGB 格式、提取 3 个颜色
-extract-colors ./bg.jpg --unabw --present --colorsys rgb --max 3
+node index.js./bg.jpg --unabw --present --colorsys rgb --max 3
 
 # 音频文件示例：高精度、排除黑白、调试模式
-extract-colors ./song.mp3 --precision 1 --unabw --dev
+node index.js./song.mp3 --precision 1 --unabw --dev
 ```
 
 #### 调试模式
 
 ```bash
 # 启用调试模式查看详细处理信息
-extract-colors ./bg.jpg --dev
+node index.js./bg.jpg --dev
 
 # 输出示例：
 # === 调试信息 ===
