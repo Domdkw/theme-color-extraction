@@ -15,9 +15,9 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
 Examples:
-  %(prog)s ./bg.jpg
-  %(prog)s ./bg.jpg --precision 0.5 --unabw --colorsys hex --present
-  %(prog)s ./song.mp3 --max 3 --colorsys rgb
+  %(prog)s ./example/bg.jpg
+  %(prog)s ./example/bg.jpg --precision 0.5 --unabw --colorsys hex --present
+  %(prog)s ./example/song.mp3 --max 3 --colorsys rgb
         '''
     )
     

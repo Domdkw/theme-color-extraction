@@ -42,10 +42,10 @@ pip install -e .
 
 ```bash
 # 提取图片颜色（使用默认设置）
-python main.py ./image.jpg
+python main.py ./example/image.jpg
 
 # 或使用安装后的命令
-extract-colors ./image.jpg
+extract-colors ./example/image.jpg
 ```
 
 ### 命令行选项
@@ -66,7 +66,7 @@ extract-colors ./image.jpg
 
 ```bash
 # 提取前 5 个主要颜色（默认）
-python main.py ./bg.jpg
+python main.py ./example/bg.jpg
 
 # 输出示例：
 # #FF5733
@@ -80,50 +80,50 @@ python main.py ./bg.jpg
 
 ```bash
 # 只提取前 3 个颜色
-python main.py ./bg.jpg --max 3
+python main.py ./example/bg.jpg --max 3
 
 # 提取前 10 个颜色
-python main.py ./bg.jpg --max 10
+python main.py ./example/bg.jpg --max 10
 ```
 
 #### 调整分辨率
 
 ```bash
 # 使用原始分辨率
-python main.py ./bg.jpg --precision 1
+python main.py ./example/bg.jpg --precision 1
 
 # 缩放到 50x50 像素
-python main.py ./bg.jpg --precision 50
+python main.py ./example/bg.jpg --precision 50
 
 # 缩放到原始尺寸的 50%
-python main.py ./bg.jpg --precision 0.5
+python main.py ./example/bg.jpg --precision 0.5
 ```
 
 #### 排除黑白颜色
 
 ```bash
 # 排除黑白及灰色调
-python main.py ./bg.jpg --unabw
+python main.py ./example/bg.jpg --unabw
 ```
 
 #### 选择颜色格式
 
 ```bash
 # 输出 HEX 格式（默认）
-python main.py ./bg.jpg --colorsys hex
+python main.py ./example/bg.jpg --colorsys hex
 
 # 输出 RGB 格式
-python main.py ./bg.jpg --colorsys rgb
+python main.py ./example/bg.jpg --colorsys rgb
 
 # 输出 RGBA 格式
-python main.py ./bg.jpg --colorsys rgba
+python main.py ./example/bg.jpg --colorsys rgba
 ```
 
 #### 显示颜色百分比
 
 ```bash
 # 显示每个颜色的占比
-python main.py ./bg.jpg --present
+python main.py ./example/bg.jpg --present
 
 # 输出示例：
 # #FF5733 (35%)
@@ -137,31 +137,31 @@ python main.py ./bg.jpg --present
 
 ```bash
 # 从 MP3 文件提取封面颜色
-python main.py ./song.mp3
+python main.py ./example/song.mp3
 
 # 从 M4A 文件提取封面颜色
-python main.py ./audio.m4a --max 3 --colorsys rgb
+python main.py ./example/audio.m4a --max 3 --colorsys rgb
 ```
 
 #### 组合选项
 
 ```bash
 # 完整示例：排除黑白、显示百分比、使用 RGB 格式、提取 3 个颜色
-python main.py ./bg.jpg --unabw --present --colorsys rgb --max 3
+python main.py ./example/bg.jpg --unabw --present --colorsys rgb --max 3
 
 # 音频文件示例：高精度、排除黑白、调试模式
-python main.py ./song.mp3 --precision 1 --unabw --dev
+python main.py ./example/song.mp3 --precision 1 --unabw --dev
 ```
 
 #### 调试模式
 
 ```bash
 # 启用调试模式查看详细处理信息
-python main.py ./bg.jpg --dev
+python main.py ./example/bg.jpg --dev
 
 # 输出示例：
 # === 调试信息 ===
-# 图片路径: ./bg.jpg
+# 图片路径: ./example/bg.jpg
 # 原始尺寸: 1920 x 1080
 # 分辨率参数: 100
 # 最大颜色数: 5
